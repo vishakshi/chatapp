@@ -1,33 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Socket.IO Chat</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.0/socket.io.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wassup chat app</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
+
 <body>
-  <input type="text" id="message" placeholder="Type your message">
-  <button id="send-message">Send</button>
-  <ul id="messages"></ul>
-
-  <script>
-    const socket = io();
-    const messageInput = document.getElementById('message');
-    const sendMessageButton = document.getElementById('send-message');
-    const messagesList = document.getElementById('messages');
-
-    sendMessageButton.addEventListener('click', () => {
-      const message = messageInput.value;
-      socket.emit('chat message', message);
-      messageInput.value = '';
-    });
-
-    socket.on('chat message', (msg) => {
-      const li = document.createElement('li');
-      li.textContent = msg;
-      messagesList.appendChild(li);
-    });
-  </script>
+    <section class="chat__section">
+        <div class="brand">
+            <img height="40" src="/wassup.png" alt="">
+            <h1>Wassup</h1>
+        </div>
+        <div class="message__area"></div>
+        <div>
+            <textarea id="textarea" cols="30" rows="1" placeholder="Write a message..."></textarea>
+        </div>
+    </section>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/client.js"></script>
 </body>
+
 </html>
